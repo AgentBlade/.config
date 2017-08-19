@@ -1,0 +1,45 @@
+URxvt.font:			 xft:Monospace:size=9:antialias=true
+URxvt.boldFont: 		 xft:Monospace:size=9:antialias=true
+URxvt.url-select.underline:	 true
+URxvt.scrollBar:		 false
+URxvt.depth: 			 32
+URxvt.saveLines: 		 9192
+URxvt.geometry:			 80x19
+URxvt.foreground:		 #c5c8c6
+URxvt.background: 		 #1d1f21
+URxvt.cursorColor: 		 #c5c8c6
+URxvt.internalBorder:		 10
+
+URxvt.color0:  			 #e8eaf6
+URxvt.color1:  			 #c5cae9
+URxvt.color2:  			 #9fa8da
+URxvt.color3:  			 #7986cb
+URxvt.color4:  			 #5c6bc0
+URxvt.color5:			 #3f51b5
+URxvt.color6:			 #3949ab
+URxvt.color7:  			 #303f9f
+URxvt.color8:  			 #283593
+URxvt.color9:  			 #3890F5
+URxvt.color10: 			 #8c9eff
+URxvt.color11: 			 #536dfe
+URxvt.color12: 			 #3d5afe
+URxvt.color13: 			 #304ffe
+URxvt.color14: 			 #93e0e3
+URxvt.color15: 			 #ffffff
+
+URxvt.loginShell: 		 true
+!URxvt.font: 			 xft:Mona Regular:size=9
+!URxvt.boldFont: 		 xft:Mona Bold:size=9
+URxvt.letterSpace: 		 -1
+URxvt.perl-ext-common: 		 default,matcher
+URxvt.url-launcher: 		 firefox
+URxvt.matcher.button: 		 1
+Xft.dpi:                         96
+Xft.antialias:                   1
+Xft.autohint:                    0
+Xft.hinting:                     1
+Xft.hintstyle:                   hintslight
+Xft.lcdfilter:                   lcdlight
+Xft.rgba:                        rgb
+URxvt.termName:                  rxvt-256color
+URxvt.lineSpace:                 0
