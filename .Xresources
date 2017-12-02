@@ -23,23 +23,25 @@ URxvt.color9:  			 #3890F5
 URxvt.color10: 			 #8c9eff
 URxvt.color11: 			 #536dfe
 URxvt.color12: 			 #3d5afe
-URxvt.color13: 			 #304ffe
+URxvt.color13: 			 #8799FF
 URxvt.color14: 			 #93e0e3
 URxvt.color15: 			 #ffffff
 
 URxvt.loginShell: 		 true
-!URxvt.font: 			 xft:Mona Regular:size=9
-!URxvt.boldFont: 		 xft:Mona Bold:size=9
 URxvt.letterSpace: 		 -1
 URxvt.perl-ext-common: 		 default,matcher
 URxvt.url-launcher: 		 firefox
 URxvt.matcher.button: 		 1
 Xft.dpi:                         96
 Xft.antialias:                   1
-Xft.autohint:                    0
+Xft.autohint:                    2
 Xft.hinting:                     1
 Xft.hintstyle:                   hintslight
 Xft.lcdfilter:                   lcdlight
 Xft.rgba:                        rgb
 URxvt.termName:                  rxvt-256color
 URxvt.lineSpace:                 0
+URxvt.buffered:			 false
+!Rofi
+
+#include "/home/blade/.config/zathura/rofi-theme-0.conf"
