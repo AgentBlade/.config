@@ -4,7 +4,7 @@ gaps 	   outer 7
 smart_gaps  on
 
 #System font
-font pango:VL PGothic Regular 10
+font pango:VL PGothic Regular 9
 
 #Main Function key
 set $mod Mod4
@@ -26,14 +26,10 @@ bindsym $mod+Return exec urxvt
 bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+d exec  rofi -show run -width 25 -fg "#B0E6\
-70" -bg "#14161F" -hlfg "#14161F" -hlbg "#B0E670" -bc "#141\
-61F" -location 0 -lines 4 -bw 0 -font "Dejavu Sans Mono 12"\
- -opacity 90 -fuzzy -sidebar-mode -auto-select -regex -colo\
- r-enabled -tokenize
+bindsym $mod+d exec  --no-startup-id rofi -show run -width 25 -font "Font Awesome Bold 11" -lines 5 
 
 # browse open windows
-bindsym $mod+Tab exec rofi -show window -lines 7 -width 50  -font "SFNS Text 10"
+bindsym $mod+Tab exec rofi -show window -lines 7 -width 10  -font "SFNS Text 10"
 
 #Change focus
 bindsym $mod+Left focus left
@@ -158,14 +154,14 @@ bar {
 	i3bar_command i3bar 
 	status_command i3status -c /home/blade/.config/i3/i3status.conf
 	position top 
-	font pango:VL PGothic Bold 10
+	font pango:Font Awesome Regular 9
 	colors{
 		background #1f1f1f
 		statusline #C2C2C2
 	}
 }
 
-bindsym $mod+l exec dm-tool lock
+bindsym $mod+l exec "i3lock -c 1d1f21"
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2% #increase sound volume

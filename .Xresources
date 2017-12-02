@@ -44,4 +44,4 @@ URxvt.lineSpace:                 0
 URxvt.buffered:			 false
 !Rofi
 
-#include "/home/blade/.config/zathura/rofi-theme-0.conf"
+#include "~/.config/rofi-theme-0.conf"

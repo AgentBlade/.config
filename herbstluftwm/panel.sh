@@ -10,7 +10,7 @@ fi
 # geometry has the format W H X Y
 x=${geometry[0]}
 y=${geometry[1]}
-panel_width=$((${geometry[2]} -15)) #vecchio valore= 1094 #272 di barra# 683 di padding
+panel_width=$((${geometry[2]} -20)) #vecchio valore= 1094 #272 di barra# 683 di padding
 panel_height=20
 font="-*-fixed-medium-*-*-*-13-*-*-*-*-*-*-*"
 font2="-misc-fontawesome-medium-r-normal--0-0-0-12-p-0-iso10646-1"
@@ -44,13 +44,13 @@ if awk -Wv 2>/dev/null | head -1 | grep -q '^mawk'; then
     # mawk needs "-W interactive" to line-buffer stdout correctly
     # http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=593504
     uniq_linebuffered() {
-      awk -W interactive '$0 != l { print ; l=$0 ; fflush(); }' "$@"
+	awk -W interactive '$0 != l { print ; l=$0 ; fflush(); }' "$@"
     }
 else
     # other awk versions (e.g. gawk) issue a warning with "-W interactive", so
     # we don't want to use it there.
     uniq_linebuffered() {
-      awk '$0 != l { print ; l=$0 ; fflush(); }' "$@"
+	awk '$0 != l { print ; l=$0 ; fflush(); }' "$@"
     }
 fi
 
@@ -65,16 +65,16 @@ hc pad $monitor 20
 
     #mpc idleloop player &
     while true ; do
-        # "date" output is checked once a second, but an event is only
-        # generated if the output changed compared to the previous run.
-        date +$'date\t^fg(#efefef)%H:%M:%S   %a, %d %b %Y'
-        sleep 1 || break
+	# "date" output is checked once a second, but an event is only
+	# generated if the output changed compared to the previous run.
+	date +$'date\t^fg(#efefef)%H:%M:%S   %a, %d %b %Y'
+	sleep 1 || break
     done > >(uniq_linebuffered) &
     childpid=$!
     hc --idle
     kill $childpid
 } 2> /dev/null |{
-    IFS=$'\t' read -ra tags <<< "$(hc tag_status $monitor)"
+        IFS=$'\t' read -ra tags <<< "$(hc tag_status $monitor)"
 #    visible=true
 #    date=""
 #    windowtitle=""
@@ -111,7 +111,7 @@ hc pad $monitor 20
                 echo -n "focus_monitor \"$monitor\" && "
                 echo -n "\"${herbstclient_command[@]:-herbstclient}\" "
                 #echo -n "use \"${i:1}\") ${i:1} ^ca()"
-		echo -n "use \"${i:1}\") ^fn(FontAwesome:size=11)${i:1}^fn() ^ca()"
+		      echo -n "use \"${i:1}\") ^fn(FontAwesome:size=11)${i:1}^fn() ^ca()"
             else
                 # non-clickable tags if using older dzen
                 echo -n " ${i:1} "
@@ -123,18 +123,19 @@ hc pad $monitor 20
 	temp=$(( $(cat /sys/class/thermal/thermal_zone0/temp) / 1000))
         if [ ! -f /sys/class/power_supply/BAT0/capacity ] ; then
 	    bat="-"
-	else
-	    bat=$(cat /sys/class/power_supply/BAT0/capacity)%
+	    else
+	        bat=$(cat /sys/class/power_supply/BAT0/capacity)%
 	fi
+
 	#small adjustments
-	
-        right="$separator^fg()CPU: $cpu MHz $separator^fg() TEMP: $temp C $separator^fg() BAT: $bat $separator^fg() $date $separator"
+		
+        right="$separator^fg() CPU: $cpu MHz $separator^fg() TEMP: $temp C $separator^fg() BAT: $bat $separator^fg() $date $separator"
 
 	right_text_only=$(echo -n "$right" | sed 's.\^[^(]*([^)]*)..g')
         # get width of right aligned text.. and add some space..
         width=$($textwidth "$font" "$right_text_only")
         echo -n "^pa($(($panel_width - $width)))$right"
-        echo
+        echo  
 
         ### Data handling ###
         # This part handles the events generated in the event loop, and sets
@@ -157,8 +158,8 @@ hc pad $monitor 20
                 date="${cmd[@]:1}"
                 ;;
 	    brightness)
-		brightstatus="$(printf '^fg()%d^fg(#909090)%%' $(backlight.sh '?'))"
-		;;
+			brightstatus="$(printf '^fg()%d^fg(#909090)%%' $(backlight.sh '?'))"
+			;;
             quit_panel)
                 exit
                 ;;
@@ -166,19 +167,19 @@ hc pad $monitor 20
                 currentmonidx=$(hc list_monitors | sed -n '/\[FOCUS\]$/s/:.*//p')
                if [ "${cmd[1]}" -ne "$monitor" ] ; then
                     continue
-                fi
+               fi
                if [ "${cmd[1]}" = "current" ] && [ "$currentmonidx" -ne "$monitor" ] ; then
                     continue
-                fi
-                echo "^togglehide()"
-                if $visible ; then
-                    visible=false
-                    hc pad $monitor 0
-                else
-                    visible=true
-                    hc pad $monitor $panel_height
-                fi
-                ;;
+               fi
+               echo "^togglehide()"
+               if $visible ; then
+                   visible=false
+                   hc pad $monitor 0
+               else
+                   visible=true
+                   hc pad $monitor $panel_height
+               fi
+               ;;
             reload)
                 exit
                 ;;
@@ -189,7 +190,6 @@ hc pad $monitor 20
             #    ;;
         esac
     done
-
     ### dzen2 ###
     # After the data is gathered and processed, the output of the previous block
     # gets piped to dzen2.
@@ -213,3 +213,4 @@ hc pad $monitor 20
 	nm-applet
     fi
 } &
+
