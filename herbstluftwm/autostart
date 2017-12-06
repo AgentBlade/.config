@@ -7,9 +7,8 @@ hc() {
     }
 
 #autostart
-#DRI_PRIME=1
 compton --config ~/.config/compton.conf &
-feh --bg-fill '/home/blade/Pictures/mountains.png' &
+feh --bg-fill '/home/blade/Pictures/skyline1.jpg' &
 nm-applet&
 xset s off&
 xset s noblank&
@@ -35,7 +34,7 @@ Mod=Mod4   # Use the super key as the main modifier
 hc keybind $Mod-Shift-BackSpace quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-q close
-hc keybind $Mod-Return spawn ${TERMINAL:-urxvt} # use your $TERMINAL with xterm as fallback
+hc keybind $Mod-Return spawn urxvtcd
 
 # basic movement
 # focusing clients
@@ -58,14 +57,14 @@ hc keybind $Mod-o       split   right   0.5
 hc keybind $Mod-Control-space split explode
 
 # resizing frames
-resizestep=0.05
+resizestep=0.01
 hc keybind $Mod-Control-Left    resize left +$resizestep
 hc keybind $Mod-Control-Down    resize down +$resizestep
 hc keybind $Mod-Control-Up      resize up +$resizestep
 hc keybind $Mod-Control-Right   resize right +$resizestep
 
 #rofi
-hc keybind $Mod-d spawn rofi -show run -width 25 -fg "#B0E670" -bg "#14161F" -hlfg "#14161F" -hlbg "#B0E670" -bc "#14161F" -location 0 -lines 4 -bw 0 -font "Dejavu Sans Mono 12" -opacity 90 -fuzzy -sidebar-mode -auto-select -regex -color-enabled -tokenize
+hc keybind $Mod-d spawn rofi -show run -width 25  -lines 4 -bw 0 -font "Dejavu Sans Mono Bold 12" -fuzzy -sidebar-mode -auto-select -regex -color-enabled -tokenize
 
 #rofi -font "VL PGothic Bold 15" -show run -width 25  -lines 5
 
@@ -144,9 +143,9 @@ hc attr theme.active.outer_color '#240054' #'#3E4A00'
 hc attr theme.background_color '#141414'
 
 hc set window_gap 7
-hc set frame_padding 7
-hc set smart_window_surroundings 1
-hc set smart_frame_surroundings 1
+hc set frame_padding 5
+hc set smart_window_surroundings 0
+hc set smart_frame_surroundings 0
 hc set mouse_recenter_gap 1
 hc set focus_follows_mouse 2
 
@@ -165,19 +164,21 @@ hc rule class=nm-connection-editor pseudotile=on
 # unlock, just to be sure
 hc unlock
 
+hc set_layout grid
+
 herbstclient set tree_style '╾│ ├└╼─┐'
 
 # do multi monitor setup here, e.g.:
 # hc set_monitors 1280x1024+0+0 1280x1024+1280+0
 # or simply:
-# hc detect_monitors
+#hc detect_monitors
 
 # find the panel
 panel=~/.config/herbstluftwm/panel.sh
 #[ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
 for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     # start it on each monitor
-    "$panel" & # $monitor &
+    "$panel" &  $monitor &
 done
 
 # Pulse Audio controls

@@ -8,16 +8,16 @@ if [ -z "$geometry" ] ;then
     exit 1
 fi
 # geometry has the format W H X Y
-x=${geometry[0]}
-y=${geometry[1]}
-panel_width=$((${geometry[2]} -20)) #vecchio valore= 1094 #272 di barra# 683 di padding
+x=21 #${geometry[0]}
+y=9 #${geometry[1]}
+panel_width=$((${geometry[2]} -50)) #vecchio valore= 1094 #272 di barra# 683 di padding
 panel_height=20
 font="-*-fixed-medium-*-*-*-13-*-*-*-*-*-*-*"
 font2="-misc-fontawesome-medium-r-normal--0-0-0-12-p-0-iso10646-1"
-bgcolor="#171717"
+bgcolor="#101010"
 #bgcolor=$(hc get frame_border_normal_color)
 selbg=$(hc get window_border_active_color)
-selfg='#101010'
+selfg='#171717'
 
 ####
 # Try to find textwidth binary.
@@ -201,9 +201,9 @@ hc pad $monitor 20
 {
     if  pgrep -x "stalonetray" > /dev/null ; then
 	killall stalonetray
-	stalonetray --background "#222222"
+	stalonetray --background "#222222" --config ~/.stalonetrayrc
     else
-	stalonetray --background "#222222"
+	stalonetray --background "#222222" --config ~/.stalonetrayrc
     fi
 
     if  pgrep -x "nm-applet" > /dev/null ; then
