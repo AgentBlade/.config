@@ -10,7 +10,7 @@ fi
 # geometry has the format W H X Y
 x=21 #${geometry[0]}
 y=9 #${geometry[1]}
-panel_width=$((${geometry[2]} -50)) #vecchio valore= 1094 #272 di barra# 683 di padding
+panel_width=$((${geometry[2]} -42)) #vecchio valore= 1094 #272 di barra# 683 di padding
 panel_height=20
 font="-*-fixed-medium-*-*-*-13-*-*-*-*-*-*-*"
 font2="-misc-fontawesome-medium-r-normal--0-0-0-12-p-0-iso10646-1"
